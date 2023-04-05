@@ -1,5 +1,21 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bitter:ital,wght@0,200;1,400&family=Lato:ital,wght@0,400;1,300&family=Merriweather:wght@300;700&family=Montserrat+Alternates:wght@300;500&family=Oswald&family=PT+Sans+Caption:wght@700&family=Playfair+Display+SC:wght@700&family=Poppins:wght@300&family=Raleway:wght@300&family=Roboto+Slab:wght@200;500&family=Ubuntu+Mono:wght@400;700&display=swap');
+
+/* font-family: 'Abril Fatface', cursive; */
+/* font-family: 'Bitter', serif; */
+/* font-family: 'Lato', sans-serif; */
+/* font-family: 'Merriweather', serif; */
+/* font-family: 'Montserrat Alternates', sans-serif; */
+/* font-family: 'Oswald', sans-serif; */
+/* font-family: 'Playfair Display SC', serif; */
+/* font-family: 'Poppins', sans-serif; */
+/* font-family: 'PT Sans Caption', sans-serif; */
+/* font-family: 'Raleway', sans-serif; */
+/* font-family: 'Roboto Slab', serif; */
+/* font-family: 'Ubuntu Mono', monospace; */
+
+* {
 	font-size: 1.3vw;
+	font-family: 'Poppins', sans-serif;
 }
 
 .bodyAccesoDenegado {

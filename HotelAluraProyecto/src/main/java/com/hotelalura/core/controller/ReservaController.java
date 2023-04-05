@@ -18,4 +18,23 @@ public class ReservaController extends BaseController{
         }
 		return "reservas";
 	}
+	
+	@GetMapping("/alurebi")
+	public String reservaKomorebi(HttpSession session) {
+		
+		if (!isUserAuthenticated(session)) {
+            return "redirect:/accesoDenegado";
+        }
+		return "reservasKomorebi";
+	}
+	
+	@GetMapping("/gokolura")
+	public String reservaGokotta(HttpSession session) {
+		
+		if (!isUserAuthenticated(session)) {
+            return "redirect:/accesoDenegado";
+        }
+		return "reservasGokotta";
+	}
 }
+
