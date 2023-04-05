@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-	<h2>Ingresaste</h2>
-	<a th:href="@{/reservas}">gggggggg</a>
+	<h1>Hola</h1>
+	<div th:text="'Hola! Todo bien? ' +${session.user.nombre}"></div>
 </body>
 </html>

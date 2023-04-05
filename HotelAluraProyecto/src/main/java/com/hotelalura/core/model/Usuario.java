@@ -15,11 +15,17 @@ public class Usuario {
     @Column(name = "id_usuario")
     private int idUsuario;
     
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
     
     @Column(name = "pass", nullable = false)
     private String password;
+    
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+    
+    @Column(name = "apellido", nullable = false)
+    private String apellido;
     
     public Usuario() {}
 
@@ -27,9 +33,11 @@ public class Usuario {
 		return idUsuario;
 	}
 
-	public Usuario(String email, String password) {
+	public Usuario(String email, String password, String nombre, String apellido) {
 		this.email = email;
 		this.password = password;
+		this.nombre = nombre;
+		this.apellido = apellido;
 	}
 
 	public void setIdUsuario(int idUsuario) {
@@ -50,6 +58,22 @@ public class Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
     
     
