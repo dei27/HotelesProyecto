@@ -1,0 +1,14 @@
+.bodyAccesoDenegado {
+	background-image: url("/imgs/401.webp");
+}
+
+.bodyLogin {
+	background-image: url("/imgs/fondoLogin.webp");
+}
+
+.bodyAccesoDenegado, .bodyLogin {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+

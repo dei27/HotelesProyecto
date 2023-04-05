@@ -1,0 +1,26 @@
+<nav class="navbar bg-body-tertiary bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" th:href="@{/index}">Hotel Alura</a>
+    <a class="navbar-toggler border-0" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-2 text-white"></i>
+    </a>
+    <div class="offcanvas offcanvas-end w-25 text-center text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+        <button type="button" class="btn-close text-bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item mb-3">
+            <a class="btn w-100 p-3 btn-secondary" th:href="@{/reservas}">Ver Reservas</a>
+          </li>
+          <li class="nav-item mb-3">
+            <form th:action="@{/logout}" method="post">
+         		<button type="submit" class="btn btn-warning w-100 p-3 text-white">Cerrar sesión</button>
+        	</form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

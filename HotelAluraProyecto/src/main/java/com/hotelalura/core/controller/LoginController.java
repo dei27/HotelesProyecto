@@ -38,14 +38,16 @@ public class LoginController {
             return "redirect:/index";
         } else {
             bindingResult.rejectValue("email", "error.user", "Credenciales incorrectas");
+            session.removeAttribute("user");
             return "login";
         }
     }
 
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/";
     }
+    
 	
 }

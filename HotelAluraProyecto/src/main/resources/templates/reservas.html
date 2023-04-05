@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="description" content="">
-	<meta name="author" content="Deivi Campos">
-	<meta name="keywords" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Hotel Alura</title>
-	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
-	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}" defer></script>
-	<script th:src="@{/webjars/bootstrap/5.2.3/js/popper.min.js}" defer></script>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<head th:replace="~{headApp}">
 </head>
 <body>
 	<h1>Hola</h1>
 	<div th:text="'Hola! Todo bien? ' +${session.user.nombre}"></div>
+	<p>Selecciona un texto y presiona la tecla "L" para escucharlo:</p>
+	
+	<p>Playa Tamarindo: Ubicada en la provincia de Guanacaste, esta playa es conocida por sus hermosas aguas cristalinas, arena blanca y su vibrante vida nocturna.
+
+Parque Nacional Manuel Antonio: Situado en la costa del Pacífico, este parque es conocido por su impresionante biodiversidad, playas de ensueño y senderos naturales para caminar.
+
+Volcán Arenal: Ubicado en la provincia de Alajuela, este volcán es uno de los más activos en Centroamérica y es una atracción turística popular debido a sus aguas termales y hermosas vistas panorámicas.
+
+Parque Nacional Tortuguero: Situado en la costa caribeña, este parque es conocido por sus canales naturales, bosques tropicales y su papel en la protección de las tortugas marinas.
+
+Monteverde: Situada en la cordillera de Tilarán, Monteverde es una reserva natural que cuenta con increíble biodiversidad y ofrece oportunidades de senderismo y observación de aves.
+
+Espero que estos ejemplos te sean útiles. ¡Disfruta de tu viaje a Costa Rica!</p>
+
+	<div id="texto-seleccionado" hidden=true></div>
 </body>
 </html>

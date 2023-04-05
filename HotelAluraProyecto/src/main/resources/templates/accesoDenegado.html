@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{headApp}">
+</head>
+<body class="bodyAccesoDenegado">
+	<div class="container-fluid vh-100 d-flex justify-content-center pt-5">
+	  <div class="row">
+	    <div class="col-md-6 w-100">
+	      <div class="card">
+	        <div class="card-body text-center">
+	          <i class="bi bi-exclamation-lg text-danger mb-3 fs-3"></i>
+	          <h5 class="card-title">Acceso denegado</h5>
+	          <p class="card-text">Lo sentimos, no tiene permisos para acceder a esta página.</p>
+	          <a th:href="@{/}" class="btn btn-primary">Volver al inicio</a>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</body>
+</html>
