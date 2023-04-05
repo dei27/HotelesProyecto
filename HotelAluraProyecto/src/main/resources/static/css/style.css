@@ -1,3 +1,7 @@
+*{
+	font-size: 1.3vw;
+}
+
 .bodyAccesoDenegado {
 	background-image: url("/imgs/401.webp");
 }
@@ -6,9 +10,46 @@
 	background-image: url("/imgs/fondoLogin.webp");
 }
 
-.bodyAccesoDenegado, .bodyLogin {
+.bodyIndex {
+	background-image: url("/imgs/fondoIndex.webp");
+}
+
+.bodyAccesoDenegado, .bodyLogin, .bodyIndex {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+.cardIndexK{
+	background: rgba(255,140,50,0.7);
+}
+
+.cardIndexG{
+	background: rgba(100,100,150,0.7);
+}
+
+.card-header{
+	background: rgba(0,0,0,0.2);
+}
+
+/* .card-body{ */
+/* 	background: rgba(0,0,0,0.1); */
+/* } */
+
+.cardIndexK:hover{
+	background: rgba(245, 59, 177, 0.8);
+}
+
+.cardIndexG:hover{
+	background: rgba(52, 177, 142, 0.8);
+}
+
+.saludo{
+	color:white;
+}
+
+
+
+
+
 
