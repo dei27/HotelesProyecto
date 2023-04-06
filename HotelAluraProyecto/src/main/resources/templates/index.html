@@ -6,10 +6,10 @@
 	<header class="sticky-top" >
 		<div th:replace="~{NavApp}"></div>
 	</header>
-	<main class="container mt-3 pt-5">
+	<main class="container my-3 pt-5">
 		<h2 class="text-center saludo" th:text="'¡Hola! Saludos ' + ${session.user.nombre} + ' '+ ${session.user.apellido} + ', hoy es '+ ${#dates.format(#dates.createNow(), 'dd/MM/yyyy')} + '.'"></h2>
 		<div class="col-md-10 row m-auto text-white">
-			<div class="col-md-6 text-center mt-3">
+			<div class="col-md-6 text-center my-3">
 			<div class="w-100 h-100 m-auto border-0 shadow cardIndexK p-3 rounded-5">
 				<div class="card-header card-header rounded-3 p-3">
 					<h4 class="card-title text-center">Hotel Alurebi</h4>
@@ -21,7 +21,7 @@
 				 <a th:href="@{/reservas/alurebi}" class="btn w-100 p-3 btn-dark rounded-3 mt-2">Reservar</a>
 			</div>
 			</div>
-			<div class="col-md-6 text-center mt-3">
+			<div class="col-md-6 text-center my-3">
 				<div class="w-100 h-100 m-auto border-0 shadow cardIndexG p-3 rounded-5">
 					<div class="card-header card-header rounded-3 p-3">
 						<h4 class="card-title text-center">Hotel Gökolura</h4>

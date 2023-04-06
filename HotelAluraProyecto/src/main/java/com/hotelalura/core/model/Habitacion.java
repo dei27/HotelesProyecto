@@ -18,7 +18,7 @@ public class Habitacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_habitacion")
-    private int idHabitacion;
+    private Integer idHabitacion;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_hotel", nullable = false)
@@ -31,9 +31,6 @@ public class Habitacion {
     @Column(name = "num_habitacion", nullable = false)
     private int numHabitacion;
     
-    @Column(name = "descripcion_habitacion", nullable = false)
-    private String descripcion;
-    
     @Column(name = "precio_habitacion", nullable = false)
     private BigDecimal precio;
     
@@ -42,12 +39,10 @@ public class Habitacion {
     
     public Habitacion() {}
 
-	public Habitacion(Hotel hotel, TipoHabitacion tipoHabitacion, int numHabitacion, String descripcion,
-			BigDecimal precio, int maxPersonas) {
+	public Habitacion(Hotel hotel, TipoHabitacion tipoHabitacion, int numHabitacion, BigDecimal precio, int maxPersonas) {
 		this.hotel = hotel;
 		this.tipoHabitacion = tipoHabitacion;
 		this.numHabitacion = numHabitacion;
-		this.descripcion = descripcion;
 		this.precio = precio;
 		this.maxPersonas = maxPersonas;
 	}
@@ -56,7 +51,7 @@ public class Habitacion {
 		return idHabitacion;
 	}
 
-	public void setIdHabitacion(int idHabitacion) {
+	public void setIdHabitacion(Integer idHabitacion) {
 		this.idHabitacion = idHabitacion;
 	}
 
@@ -82,14 +77,6 @@ public class Habitacion {
 
 	public void setNumHabitacion(int numHabitacion) {
 		this.numHabitacion = numHabitacion;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	public BigDecimal getPrecio() {

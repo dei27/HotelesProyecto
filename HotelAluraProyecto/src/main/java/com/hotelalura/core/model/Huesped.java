@@ -18,13 +18,16 @@ public class Huesped {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_huesped")
-    private int idHuesped;
+    private Integer idHuesped;
     
     @Column(name = "nombre", nullable = false)
     private String nombre;
     
     @Column(name = "apellido", nullable = false)
     private String apellido;
+    
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
     
     @Column(name = "fecha_nacimiento", nullable = false)
     private LocalDate fechaNacimiento;
@@ -38,9 +41,10 @@ public class Huesped {
     
     public Huesped() {}
 
-	public Huesped(String nombre, String apellido, LocalDate fechaNacimiento, Pais pais, String telefono) {
+	public Huesped(String nombre, String apellido, String email, LocalDate fechaNacimiento, Pais pais, String telefono) {
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.email = email;
 		this.fechaNacimiento = fechaNacimiento;
 		this.pais = pais;
 		this.telefono = telefono;
@@ -50,7 +54,7 @@ public class Huesped {
 		return idHuesped;
 	}
 
-	public void setIdHuesped(int idHuesped) {
+	public void setIdHuesped(Integer idHuesped) {
 		this.idHuesped = idHuesped;
 	}
 
@@ -92,6 +96,14 @@ public class Huesped {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
     
 }

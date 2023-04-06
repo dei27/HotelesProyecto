@@ -31,19 +31,15 @@ public class Factura {
 
 	@Column(name = "fecha_pago", nullable = false)
 	private LocalDate fechaPago;
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_metodo_pago", nullable = false)
-	private MetodoPago metodoPago;
+	
 
 	public Factura() {
 	}
 
-	public Factura(Reservacion reservacion, BigDecimal montoTotal, LocalDate fechaPago, MetodoPago metodoPago) {
+	public Factura(Reservacion reservacion, BigDecimal montoTotal, LocalDate fechaPago) {
 		this.reservacion = reservacion;
 		this.montoTotal = montoTotal;
 		this.fechaPago = fechaPago;
-		this.metodoPago = metodoPago;
 	}
 
 	public Integer getIdFactura() {
@@ -76,13 +72,5 @@ public class Factura {
 
 	public void setFechaPago(LocalDate fechaPago) {
 		this.fechaPago = fechaPago;
-	}
-
-	public MetodoPago getMetodoPago() {
-		return metodoPago;
-	}
-
-	public void setMetodoPago(MetodoPago metodoPago) {
-		this.metodoPago = metodoPago;
 	}
 }

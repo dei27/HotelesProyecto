@@ -42,3 +42,24 @@ document.addEventListener('keydown', function(event) {
 });
 
 
+document.getElementById('aumentar-btn').addEventListener('click', function() {
+  var zoomActual = parseFloat(document.body.style.zoom) || 1;
+  zoomActual += 0.1;
+  document.body.style.zoom = zoomActual;
+});
+
+document.getElementById('reducir-btn').addEventListener('click', function() {
+  var zoomActual = parseFloat(document.body.style.zoom) || 1;
+  zoomActual -= 0.1;
+  document.body.style.zoom = zoomActual;
+});
+
+document.getElementById('restablecer-btn').addEventListener('click', function() {
+  document.body.style.zoom = 1;
+});
+
+
+
+
+
+

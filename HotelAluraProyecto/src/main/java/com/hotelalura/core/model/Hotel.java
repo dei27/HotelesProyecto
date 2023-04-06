@@ -13,7 +13,7 @@ public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_hotel")
-    private int idHotel;
+    private Integer idHotel;
     
     @Column(name = "nombre_hotel", nullable = false)
     private String nombre;
@@ -28,7 +28,7 @@ public class Hotel {
 		return idHotel;
 	}
 
-	public void setIdHotel(int idHotel) {
+	public void setIdHotel(Integer idHotel) {
 		this.idHotel = idHotel;
 	}
 

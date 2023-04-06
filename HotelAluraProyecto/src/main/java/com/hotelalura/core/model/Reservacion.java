@@ -37,16 +37,21 @@ public class Reservacion {
 
     @Column(name = "num_personas", nullable = false)
     private Integer numPersonas;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_metodo_pago", nullable = false)
+	private MetodoPago metodoPago;
 
     public Reservacion() {}
 
 	public Reservacion(Huesped huesped, Habitacion habitacion, LocalDate fechaInicio, LocalDate fechaFin,
-			Integer numPersonas) {
+			Integer numPersonas, MetodoPago metodoPago) {
 		this.huesped = huesped;
 		this.habitacion = habitacion;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.numPersonas = numPersonas;
+		this.metodoPago = metodoPago;
 	}
 
 	public Integer getIdReservacion() {
@@ -95,6 +100,14 @@ public class Reservacion {
 
 	public void setNumPersonas(Integer numPersonas) {
 		this.numPersonas = numPersonas;
+	}
+
+	public MetodoPago getMetodoPago() {
+		return metodoPago;
+	}
+
+	public void setMetodoPago(MetodoPago metodoPago) {
+		this.metodoPago = metodoPago;
 	}
     
     

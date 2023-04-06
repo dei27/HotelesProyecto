@@ -2,16 +2,129 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head th:replace="~{headApp}">
 </head>
-<body>
+<body class="bodyReservaGokolura">
 	<header class="sticky-top">
 		<div th:replace="~{NavApp}"></div>
 	</header>	
 	<main>
-			<h2>Gokotta</h2>
+		<div class="container my-5">
+			 <form method="post" th:action="@{/facturacion}" class="shadow p-3 rounded-4">
+				<div class="row">
+					<div class="col-9">
+			     		<h2>Reservación de habitación</h2>
+			     	</div>
+			     	<div class="col-3">
+			     		<button type="button" class="btn btn-primary w-100 p-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Huésped</button>
+			     	</div>
+				</div>
+			     <div class="row my-3">
+			     	<div class="col-4">
+			     		<div class="input-group mb-3">
+						  <label class="input-group-text" for="inputGroupSelect01">Huésped</label>
+						  <select class="form-select" id="inputGroupSelect01" name="huesped">
+						   	<option th:each="huesped : ${huespedes}" th:value="${huesped.idHuesped}" th:text="${huesped.email}" class="text-center"></option>
+						  </select>
+						</div>
+			     	</div>
+		     		<div class="col-4">
+		     			<div class="input-group mb-3">
+						  <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+						  <select class="form-select" id="inputGroupSelect01" name="habitacion">
+						   	<option th:each="habitacion : ${habitaciones}" th:value="${habitacion}" th:text="${habitacion}" class="text-center"></option>
+						  </select>
+						</div>
+		     		</div>
+		     		<div class="col-4">
+						<div class="input-group mb-3">
+				            <label for="cantidadPersonas" class="input-group-text">Número de personas:</label>
+				            <input id="cantidadPersonas" name="cantidadPersonas" type="number" class="form-control text-center" required min="1" value="1"/>
+				        </div>
+					</div>
+		     		
+				</div>
+				<div class="row my-3">
+					<div class="col-4">
+						<div class="input-group mb-3">
+				            <label for="fechaInicio" class="input-group-text">Fecha de inicio:</label>
+				            <input id="fechaInicio" name="fechaInicio" type="date" class="form-control text-center" required/>
+			       		</div>
+					</div>
+					<div class="col-4">
+						<div class="input-group mb-3">
+				            <label for="fechaFin" class="input-group-text">Fecha de fin:</label>
+				            <input id="fechaFin" name="fechaFin" type="date" class="form-control text-center" required/>
+				        </div>
+					</div>
+					<div class="col-4">
+		     			<div class="input-group mb-3">
+						  <label class="input-group-text" for="inputGroupSelect01">Forma Pago</label>
+						  <select class="form-select" id="inputGroupSelect01" name="habitacion">
+						   	<option th:each="metodo : ${metodos}" th:value="${metodo.idMetodoPago}" th:text="${metodo.nombreMetodoPago}" class="text-center"></option>
+						  </select>
+						</div>
+		     		</div>
+					<div class="col-12 text-center">
+						<button type="submit" class="btn btn-primary w-50 my-3">Reservar</button>
+					</div>
+			        
+				</div>
+			</form>
+		</div>
 	</main>	
 	<footer>
 	
 	</footer>
 	<div id="texto-seleccionado" hidden=true></div>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-5" id="exampleModalLabel">Detalles del nuevo huésped</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <div class="container">
+			  <div class="row">
+			    <div class="col-md-6">
+			      <div class="form-floating mb-3">
+			        <input type="text" class="form-control text-center" id="nombre" placeholder="Nombre" required name="nombre">
+			        <label for="nombre">Nombre</label>
+			      </div>
+			      <div class="form-floating mb-3">
+			        <input type="text" class="form-control text-center" id="apellido" placeholder="Apellido" required name="apellido">
+			        <label for="apellido">Apellido</label>
+			      </div>
+			      <div class="form-floating mb-3">
+			        <input type="email" class="form-control text-center" id="email" placeholder="Email" required name="email">
+			        <label for="email">Email</label>
+			      </div>
+			    </div>
+			    <div class="col-md-6">
+			      <div class="form-floating mb-3">
+			        <input type="date" class="form-control text-center" id="fechaNacimiento" placeholder="Fecha de Nacimiento" required name="fechaNacimiento">
+			        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+			      </div>
+			      <div class="form-floating mb-3">
+			        <select class="form-select" id="pais" required name="pais">
+			          <option value="" disabled selected>Selecciona un país</option>
+			        </select>
+			        <label for="pais">País</label>
+			      </div>
+			      <div class="form-floating mb-3">
+			        <input type="tel" class="form-control text-center" id="telefono" placeholder="Teléfono" required name="telefono">
+			        <label for="telefono">Teléfono</label>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+	        <button type="button" class="btn btn-primary">Guardar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
 </html>
