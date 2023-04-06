@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{headApp}">
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			 <div class="card-body">
+			    <h3 class="card-title text-center" th:text="'Factura #: ' + ${factura.idFactura}"></h3>
+			    <h4 class="card-subtitle mb-2 text-body-secondary text-center" th:text="'Reserva creada con éxito # ' + ${factura.reservacion.idReservacion}"></h4>
+			    <div class="row">
+			    	<div class="col-6">
+					    <div class="input-group mb-3">
+						  	<label class="input-group-text" for="huesped">Huésped</label>
+						  	<input id="huesped" type="text" class="form-control text-center" th:value="${factura.reservacion.huesped.nombre} +' '+ ${factura.reservacion.huesped.apellido}" readonly="readonly">
+						</div>	
+					     <div class="input-group mb-3">
+						  	<label class="input-group-text" for="habitacion">Número de Habitación</label>
+						  	<input id="habitacion" type="number" class="form-control text-center" th:value="${factura.reservacion.habitacion.numHabitacion}" readonly="readonly">
+						</div>
+						<div class="input-group mb-3">
+						  	<label class="input-group-text" for="habitacionTipo">Tipo de Habitación</label>
+						  	<input id="habitacionTipo" type="text" class="form-control text-center" th:value="${factura.reservacion.habitacion.tipoHabitacion.nombre}" readonly="readonly">
+						</div>	
+						<div class="input-group mb-3">
+						  	<label class="input-group-text" for="descripcion">Descripción</label>
+						  	<input id="descripcion" type="text" class="form-control text-center" th:value="${factura.reservacion.habitacion.tipoHabitacion.descripcion}" readonly="readonly">
+						</div>
+						<div class="input-group mb-3">
+						  	<label class="input-group-text" for="personas">Cantidad Personas</label>
+						  	<input id="personas" type="number" class="form-control text-center" th:value="${factura.reservacion.numPersonas}" readonly="readonly">
+						</div>
+					</div>
+			    	<div class="col-6">
+			    	 	<div class="input-group mb-3">
+						  	<label class="input-group-text" for="fechaInicio">Fecha Inicio</label>
+						  	<input id="fechaInicio" type="date" class="form-control text-center" th:value="${factura.reservacion.fechaInicio}" readonly="readonly">
+						</div>
+			    		<div class="input-group mb-3">
+						  	<label class="input-group-text" for="fechaFin">Fecha Fin</label>
+						  	<input id="fechaFin" type="date" class="form-control text-center" th:value="${factura.reservacion.fechaFin}" readonly="readonly">
+						</div>	
+						
+					    <div class="input-group mb-3">
+						  	<label class="input-group-text" for="fechaPago">Fecha Pago</label>
+						  	<input id="fechaPago" name="fechaInicio" type="date" class="form-control text-center" th:value="${factura.fechaPago}" readonly="readonly">
+						</div>	
+						<div class="input-group mb-3">
+						  	<label class="input-group-text" for="metodo">Método de Pago</label>
+						  	<input id="metodo" type="text" class="form-control text-center" th:value="${factura.reservacion.metodoPago.nombreMetodoPago}" readonly="readonly">
+						</div>  
+						<div class="input-group mb-3">
+						  	<label class="input-group-text" for="total">Total</label>
+						  	<input id="total" type="number" class="form-control text-center" th:value="${factura.montoTotal}" readonly="readonly">
+						</div>  
+			    	</div>
+			    </div>
+			    <a href="#" class="card-link">Nueva reserva</a>
+			    <a href="#" class="card-link">Inicio</a>
+			    fechaInicio
+			 </div>
+		</div>
+	</div>
+</body>
+</html>

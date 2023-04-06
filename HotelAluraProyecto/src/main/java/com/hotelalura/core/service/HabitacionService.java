@@ -17,4 +17,9 @@ public class HabitacionService {
 	public List<Habitacion> obtenerHabitacionesbyHotel(Integer idHotel){
 		return habitacionRepo.obtenerHabitacionByHotel(idHotel);
 	}
+	
+	public Habitacion obtenerHabitacionDispoble(Integer idHotel, Integer idTipo) {
+		return habitacionRepo.obtenerHabitacionDisponible(idHotel, idTipo);
+	}
+	
 }

@@ -27,4 +27,8 @@ public class HuespedService {
 			return false;
 		}
 	}
+	
+	public Huesped obtenerUnHuesped(Integer idHuesped) {
+		return huespedRepo.findById(idHuesped).orElseThrow(null);
+	}
 }

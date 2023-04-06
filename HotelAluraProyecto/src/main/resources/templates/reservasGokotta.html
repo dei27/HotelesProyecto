@@ -66,7 +66,7 @@
 					<div class="col-4">
 		     			<div class="input-group mb-3">
 						  	<label class="input-group-text" for="inputGroupSelect01">Forma Pago</label>
-						  	<select class="form-select" id="inputGroupSelect01" name="habitacion">
+						  	<select class="form-select" id="inputGroupSelect01" name="metodoPago">
 						   		<option th:each="metodo : ${metodos}" th:value="${metodo.idMetodoPago}" th:text="${metodo.nombreMetodoPago}" class="text-center"></option>
 						  </select>
 						</div>

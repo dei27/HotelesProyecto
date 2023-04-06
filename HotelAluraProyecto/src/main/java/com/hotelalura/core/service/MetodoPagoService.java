@@ -17,4 +17,8 @@ public class MetodoPagoService {
 	public List<MetodoPago> obtenerTodos(){
 		return metodoPagoRepo.findAll();
 	}
+	
+	public MetodoPago obtenerById(Integer idMetodo) {
+		return metodoPagoRepo.findById(idMetodo).orElseThrow(null);
+	}
 }

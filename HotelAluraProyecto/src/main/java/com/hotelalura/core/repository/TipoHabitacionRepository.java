@@ -14,4 +14,6 @@ public interface TipoHabitacionRepository extends JpaRepository<TipoHabitacion, 
 			+ "INNER JOIN h.tipoHabitacion th "
 			+ "WHERE h.hotel.idHotel = :idHotel")
 	public List<String> obtenerNombresTiposHabitacionByHotel(@Param("idHotel") Integer idHotel);
+	
+	public TipoHabitacion findByNombre(String nombre);
 }
