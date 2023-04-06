@@ -15,4 +15,8 @@ public class UsuarioService {
 	public Usuario obtenerUsuarioByEmail(String email){
 		return usuarioRepo.findByEmail(email);
 	}
+	
+	public void liberarHabitaciones() {
+		usuarioRepo.liberarHabitaciones();
+	}
 }

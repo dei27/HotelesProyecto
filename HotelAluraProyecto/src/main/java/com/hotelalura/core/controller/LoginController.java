@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hotelalura.core.model.Usuario;
-import com.hotelalura.core.repository.UsuarioRepository;
+import com.hotelalura.core.service.UsuarioService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 public class LoginController {
 
 	@Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService usuarioService;
 	
 	private Usuario usuarioModel;
 	
@@ -31,10 +31,11 @@ public class LoginController {
 	
 	@PostMapping("/login")
     public String processLoginForm(@ModelAttribute("usuario") Usuario usuario, HttpSession session, BindingResult bindingResult) {
-		usuarioModel = usuarioRepository.findByEmail(usuario.getEmail());
+		usuarioModel = usuarioService.obtenerUsuarioByEmail(usuario.getEmail());
 		
         if (usuarioModel != null && usuarioModel.getPassword().equals(usuario.getPassword())) {
             session.setAttribute("user", usuarioModel);
+            usuarioService.liberarHabitaciones();
             return "redirect:/index";
         } else {
             bindingResult.rejectValue("email", "error.user", "Credenciales incorrectas");

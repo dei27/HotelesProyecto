@@ -58,13 +58,19 @@ public class ReservaController extends BaseController {
 		if (!isUserAuthenticated(session)) {
 			return new ModelAndView("redirect:/accesoDenegado");
 		}
+
 		ModelAndView model = new ModelAndView("reservasGokotta");
 		List<String> habitacionesTipos = tiposService.obtenerNombresTiposHabitacionByHotel(1);
 		metodosPagos = metodoPagoService.obtenerTodos();
 		huespedes = huespedService.obtenerTodos();
+		paises = paisService.obtenerTodos();
 		model.addObject("habitaciones", habitacionesTipos);
 		model.addObject("metodos", metodosPagos);
 		model.addObject("huespedes", huespedes);
+		model.addObject("paises", paises);
+		Boolean nuevo = (Boolean) session.getAttribute("nuevo");
+	    session.removeAttribute("nuevo");
+	    model.addObject("nuevo", nuevo);
 		return model;
 	}
 
@@ -76,7 +82,7 @@ public class ReservaController extends BaseController {
 		}
 
 		ModelAndView model = new ModelAndView("reservasGokotta");
-		List<String> habitacionesTipos = tiposService.obtenerNombresTiposHabitacionByHotel(1);
+		List<String> habitacionesTipos = tiposService.obtenerNombresTiposHabitacionByHotel(2);
 		metodosPagos = metodoPagoService.obtenerTodos();
 		huespedes = huespedService.obtenerTodos();
 		paises = paisService.obtenerTodos();

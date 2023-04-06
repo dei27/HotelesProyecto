@@ -37,6 +37,9 @@ public class Habitacion {
     @Column(name = "max_personas", nullable = false)
     private int maxPersonas;
     
+    @Column(name = "disponible", nullable = false, columnDefinition = "boolean default true")
+    private boolean disponible;
+    
     public Habitacion() {}
 
 	public Habitacion(Hotel hotel, TipoHabitacion tipoHabitacion, int numHabitacion, BigDecimal precio, int maxPersonas) {
