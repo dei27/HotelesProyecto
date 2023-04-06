@@ -17,4 +17,14 @@ public class HuespedService {
 	public List<Huesped> obtenerTodos(){
 		return huespedRepo.findAll();
 	}
+	
+	public Boolean nuevoHuesped(Huesped huesped) {
+		
+		try {
+			huespedRepo.save(huesped);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }
