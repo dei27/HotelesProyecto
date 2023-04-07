@@ -27,7 +27,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/factura")
-public class FacturaController {
+public class FacturaController extends BaseController {
 
 	@Autowired
 	private ReservacionService reservaService;
@@ -64,6 +64,11 @@ public class FacturaController {
 			@RequestParam("habitacion") String habitacion, @RequestParam("fechaInicio") LocalDate fechaInicio,
 			@RequestParam("fechaFin") LocalDate fechaFin, @RequestParam("cantidadPersonas") Integer numPersonas,
 			@RequestParam("metodoPago") Integer metodoPago, HttpSession session) {
+		
+		if (!isUserAuthenticated(session)) {
+			return new ModelAndView("redirect:/accesoDenegado");
+		}
+		
 		ModelAndView model = new ModelAndView("factura");
 		huesped = huespedService.obtenerUnHuesped(idHuesped);
 		tipo = tipoService.obtenerByNombre(habitacion);
@@ -84,7 +89,31 @@ public class FacturaController {
 	}
 
 	@GetMapping("/gokolura")
-	public ModelAndView facturaGokolura() {
-		return null;
+	public ModelAndView facturaGokolura(@RequestParam("huesped") Integer idHuesped,
+			@RequestParam("habitacion") String habitacion, @RequestParam("fechaInicio") LocalDate fechaInicio,
+			@RequestParam("fechaFin") LocalDate fechaFin, @RequestParam("cantidadPersonas") Integer numPersonas,
+			@RequestParam("metodoPago") Integer metodoPago, HttpSession session) {
+		
+		if (!isUserAuthenticated(session)) {
+			return new ModelAndView("redirect:/accesoDenegado");
+		}
+		
+		ModelAndView model = new ModelAndView("factura");
+		huesped = huespedService.obtenerUnHuesped(idHuesped);
+		tipo = tipoService.obtenerByNombre(habitacion);
+		metodo = metodoService.obtenerById(metodoPago);
+		habitacionDisponible = habitacionService.obtenerHabitacionDispoble(2, tipo.getIdTipoHabitacion());
+
+		if (habitacionDisponible != null) {
+			idReserva = reservaService.nuevaReserva(new Reservacion(huesped, habitacionDisponible, fechaInicio, fechaFin, numPersonas, metodo));
+			factura = facturaService.obtenerByIdReserva(idReserva);
+			model.addObject("factura", factura);
+		}else {
+			String habitacionNoDisponble = "No hay habitaciones disponibles en este momento para el tipo seleccionado";
+			session.setAttribute("habitacionNoDisponble", habitacionNoDisponble);
+			return new ModelAndView("redirect:/reservas/gokolura");
+		}
+
+		return model;
 	}
 }

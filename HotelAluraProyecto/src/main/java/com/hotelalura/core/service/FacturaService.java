@@ -1,5 +1,7 @@
 package com.hotelalura.core.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class FacturaService {
 	
 	public Factura obtenerByIdReserva(Integer idReserva) {
 		return facturaRepo.findById(idReserva).orElseThrow(null);
+	}
+	
+	public List<Factura> obtenerTodas(){
+		return facturaRepo.findAll();
 	}
 }

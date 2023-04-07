@@ -1,5 +1,7 @@
 package com.hotelalura.core.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,9 @@ public class ReservacionService {
 	public Integer nuevaReserva(Reservacion reserva) {
 		Reservacion reservaGuardada = reservaRepo.save(reserva);
 	    return reservaGuardada.getIdReservacion();
+	}
+	
+	public List<Reservacion> obtenerTodas(){
+		return reservaRepo.findAll();
 	}
 }

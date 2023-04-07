@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/huesped")
-public class HuespedController {
+public class HuespedController extends BaseController {
 
 	@Autowired
 	private PaisService paisService;
@@ -33,6 +33,11 @@ public class HuespedController {
 	
 	@PostMapping("/nuevo")
 	public ModelAndView nuevoHuesped(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("email") String email, @RequestParam("fechaNacimiento") LocalDate fechaNacimiento, @RequestParam("pais") Integer idPais, @RequestParam("telefono") String telefono, HttpSession session) {
+		
+		if (!isUserAuthenticated(session)) {
+			return new ModelAndView("redirect:/accesoDenegado");
+		}
+		
 		ModelAndView model = new ModelAndView("redirect:/reservas/gokolura");
 		pais = paisService.obtenerByIdPais(idPais);
 		isNuevo = huespedService.nuevoHuesped(new Huesped(nombre, apellido, email, fechaNacimiento, pais, telefono));

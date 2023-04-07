@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="author" content="Deivi Campos">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alura Group</title>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}" defer></script>
+<script type="text/javascript" th:src="@{/js/main.js}" defer></script>
+<script type="text/javascript" th:src="@{/js/datable.js}" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/cr-1.6.2/r-2.4.1/sb-1.4.1/datatables.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+	<header class="sticky-top" >
+		<div th:replace="~{NavApp}"></div>
+	</header>
+	<div class="container table-responsive py-5">
+			<table class="table table-dark table-hover display w-100 text-center" id="reservas">
+	    	<thead class="table-dark">
+	        	<tr>
+		            <th class="text-center">Nombre</th>
+		            <th class="text-center">Apellido</th>
+		            <th class="text-center">Hotel</th>
+		            <th class="text-center">Inicio</th>
+		            <th class="text-center">Fin</th>
+		            <th class="text-center">Habitación</th>
+		            <th class="text-center">Número</th>
+		            <th class="text-center">Fecha</th>
+		            <th class="text-center">Total</th>
+		            <th class="text-center">Acciones</th>
+        		</tr>
+	    	</thead>
+    		<tbody>
+	        	<tr th:each="factura : ${facturas}">
+		            <td th:text="${factura.reservacion.huesped.nombre}"></td>
+		            <td th:text="${factura.reservacion.huesped.apellido}"></td>
+		            <td th:text="${factura.reservacion.habitacion.hotel.nombre}"></td>
+		            <td th:text="${factura.reservacion.fechaInicio}"></td>
+		            <td th:text="${factura.reservacion.fechaFin}"></td>
+		            <td th:text="${factura.reservacion.habitacion.tipoHabitacion.nombre}"></td>
+		            <td th:text="${factura.reservacion.habitacion.numHabitacion}"></td>
+		            <td th:text="${factura.fechaPago}"></td>
+		            <td th:text="${factura.montoTotal}"></td>
+		            <td class="text-center row m-auto">
+		            	<a class="col-auto" th:href="@{/inicio}"><i class="bi bi-pencil-fill  text-white"></i></a>
+		            	<a class="col-auto" th:href="@{/inicio}"><i class="bi bi-trash-fill  text-white"></i></a>
+		            </td>
+	        	</tr>
+    		</tbody>
+		</table>
+	</div>
+	<div id="texto-seleccionado" hidden=true></div>
+	<script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/cr-1.6.2/r-2.4.1/sb-1.4.1/datatables.min.js"></script>
+</body>
+</html>

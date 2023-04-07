@@ -29,13 +29,13 @@ public class Habitacion {
     private TipoHabitacion tipoHabitacion;
     
     @Column(name = "num_habitacion", nullable = false)
-    private int numHabitacion;
+    private Integer numHabitacion;
     
     @Column(name = "precio_habitacion", nullable = false)
     private BigDecimal precio;
     
     @Column(name = "max_personas", nullable = false)
-    private int maxPersonas;
+    private Integer maxPersonas;
     
     @Column(name = "disponible", nullable = false, columnDefinition = "boolean default true")
     private boolean disponible;
@@ -78,7 +78,7 @@ public class Habitacion {
 		return numHabitacion;
 	}
 
-	public void setNumHabitacion(int numHabitacion) {
+	public void setNumHabitacion(Integer numHabitacion) {
 		this.numHabitacion = numHabitacion;
 	}
 
@@ -94,7 +94,7 @@ public class Habitacion {
 		return maxPersonas;
 	}
 
-	public void setMaxPersonas(int maxPersonas) {
+	public void setMaxPersonas(Integer maxPersonas) {
 		this.maxPersonas = maxPersonas;
 	}
     
