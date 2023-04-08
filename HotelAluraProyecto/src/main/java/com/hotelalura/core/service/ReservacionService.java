@@ -22,4 +22,28 @@ public class ReservacionService {
 	public List<Reservacion> obtenerTodas(){
 		return reservaRepo.findAll();
 	}
+	
+	public Reservacion obteneReservaById(Integer idReserva) {
+		return reservaRepo.findById(idReserva).orElseThrow(null);
+	}
+	
+	public Boolean eliminarReserva(Integer idReserva) {
+		
+		try {
+			reservaRepo.deleteById(idReserva);;
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public Boolean modificarReserva(Reservacion reserva) {
+		
+		try {
+			reservaRepo.save(reserva);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }

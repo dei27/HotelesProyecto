@@ -31,6 +31,15 @@ public class ListaReservaController extends BaseController {
 		
 		ModelAndView model = new ModelAndView("listaReservas");
 		facturas = facturaService.obtenerTodas();
+		
+		Boolean eliminado = (Boolean) session.getAttribute("eliminado");
+		session.removeAttribute("eliminado");
+		
+		Boolean modificado = (Boolean) session.getAttribute("modificado");
+		session.removeAttribute("modificado");
+		
+		model.addObject("eliminado", eliminado);
+		model.addObject("modificado", modificado);
 		model.addObject("facturas", facturas);
 		return model;
 	}

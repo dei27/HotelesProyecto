@@ -21,6 +21,22 @@
 		<div th:replace="~{NavApp}"></div>
 	</header>
 	<div class="container table-responsive py-5">
+			<div th:if="${eliminado != null && eliminado}" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+				<strong>¡Éxito!</strong> Reservación eliminada con éxito.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div th:if="${eliminado != null && !eliminado}" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+				<strong>¡Error!</strong> No se pudo eliminar la reservación.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div th:if="${modificado != null && modificado}" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+				<strong>¡Éxito!</strong> Reservación editada con éxito.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div th:if="${modificado != null && !modificado}" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+				<strong>¡Error!</strong> No se pudo editar la reservación.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
 			<table class="table table-dark table-hover display w-100 text-center" id="reservas">
 	    	<thead class="table-dark">
 	        	<tr>
@@ -31,7 +47,7 @@
 		            <th class="text-center">Fin</th>
 		            <th class="text-center">Habitación</th>
 		            <th class="text-center">Número</th>
-		            <th class="text-center">Fecha</th>
+		            <th class="text-center">Pago</th>
 		            <th class="text-center">Total</th>
 		            <th class="text-center">Acciones</th>
         		</tr>
@@ -48,14 +64,96 @@
 		            <td th:text="${factura.fechaPago}"></td>
 		            <td th:text="${factura.montoTotal}"></td>
 		            <td class="text-center row m-auto">
-		            	<a class="col-auto" th:href="@{/inicio}"><i class="bi bi-pencil-fill  text-white"></i></a>
-		            	<a class="col-auto" th:href="@{/inicio}"><i class="bi bi-trash-fill  text-white"></i></a>
+		            	<a class="col-auto" href="#" data-bs-toggle="modal" th:data-bs-target="'#editarModal' + ${factura.reservacion.idReservacion}"><i class="bi bi-pencil-fill  text-white"></i></a>
+  						<a class="col-auto" href="#" data-bs-toggle="modal" th:data-bs-target="'#eliminarModal' + ${factura.reservacion.idReservacion}"><i class="bi bi-trash-fill  text-white"></i></a>
+  						
+ 							<!-- Modal de editar -->
+						<div class="modal fade" th:id="'editarModal' + ${factura.reservacion.idReservacion}" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+						  	<div class="modal-dialog modal-dialog-centered modal-md">
+							    <div class="modal-content">
+							      <div class="modal-header text-bg-dark">
+							        <h5 class="modal-title" id="editarModalLabel">Editar Registro</h5>
+							        <button type="button" class="btn-close text-bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+							      </div>
+							      <div class="modal-body text-dark">
+							        <form th:action="@{/reservas/editar}" method="post">
+							          <input type="hidden" name="id" th:value="${factura.reservacion.idReservacion}" />
+						         	<div class="form-floating mb-3">
+									  <input class="form-control  text-center" id="nombreApellido" disabled th:value="${factura.reservacion.huesped.nombre} + ' ' + ${factura.reservacion.huesped.apellido}">
+									  <label for="nombreApellido">Huésped</label>
+									</div>
+							         <div class="row">
+										<div class="col-6">
+											<div class="form-floating mb-3">
+											  <input type="date" class="form-control  text-center" id="fechaInicio" th:value="${factura.reservacion.fechaInicio}" required name="fechaInicio">
+											  <label for="fechaInicio">Fecha de inicio</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+											  <input type="date" class="form-control  text-center" id="fechaFin" th:value="${factura.reservacion.fechaFin}" required name="fechaFin">
+											  <label for="fechaFin">Fecha fin</label>
+											</div>
+										</div>
+									</div>
+							          <button type="submit" class="btn btn-primary">Actualizar</button>
+							        </form>
+							      </div>
+							    </div>
+						  	</div>
+						</div>
+
+						<!-- Modal de eliminación -->
+						<div class="modal fade" th:id="'eliminarModal' + ${factura.reservacion.idReservacion}" tabindex="-1" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered modal-md">
+						    <div class="modal-content">
+						      <div class="modal-header text-bg-dark">
+						        <h5 class="modal-title" id="eliminarModalLabel">Eliminar factura</h5>
+						        <button type="button" class="btn-close text-bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+						      </div>
+						      <div class="modal-body text-dark">
+						        <h3 th:text="'Hotel ' + ${factura.reservacion.habitacion.hotel.nombre}"></h3>
+						        <form th:action="@{/reservas/eliminar}" method="post">
+						        	<input type="hidden" name="id" th:value="${factura.reservacion.idReservacion}" />
+						         	<div class="form-floating mb-3">
+									  <input class="form-control  text-center" id="nombreApellido" disabled th:value="${factura.reservacion.huesped.nombre} + ' ' + ${factura.reservacion.huesped.apellido}">
+									  <label for="nombreApellido">Huésped</label>
+									</div>
+									<div class="row">
+										<div class="col-6">
+											<div class="form-floating mb-3">
+											  <input type="text" class="form-control  text-center" id="nombreApellido" disabled th:value="${factura.reservacion.fechaInicio}">
+											  <label for="nombreApellido">Fecha de inicio</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+											  <input type="text" class="form-control  text-center" id="nombreApellido" disabled th:value="${factura.reservacion.fechaFin}">
+											  <label for="nombreApellido">Fecha fin</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-floating mb-3">
+									  <input class="form-control  text-center" id="nombreApellido" disabled th:value="${factura.reservacion.habitacion.tipoHabitacion.nombre}">
+									  <label for="nombreApellido">Huésped</label>
+									</div>
+									<div class="modal-footer justify-content-center">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+								        <button type="submit" class="btn btn-danger">Eliminar</button>
+								    </div>
+						        </form>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 		            </td>
 	        	</tr>
     		</tbody>
 		</table>
 	</div>
+	
 	<div id="texto-seleccionado" hidden=true></div>
+	
 	<script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/cr-1.6.2/r-2.4.1/sb-1.4.1/datatables.min.js"></script>
 </body>
 </html>

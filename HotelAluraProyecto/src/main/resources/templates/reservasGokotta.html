@@ -25,6 +25,10 @@
 				  <strong>¡Error!</strong> El huésped no pudo ser creado.
 				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
+				<div th:if="${habitacionNoDisponble != null}" class="alert alert-success alert-dismissible fade show text-center" role="alert" th:text=${habitacionNoDisponble}>
+				  <strong>¡Error!</strong>
+				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
 			     <div class="row my-3">
 			     	<div class="col-4">
 			     		<div class="input-group mb-3">

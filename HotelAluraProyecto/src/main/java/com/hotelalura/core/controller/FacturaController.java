@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -88,7 +87,7 @@ public class FacturaController extends BaseController {
 		return model;
 	}
 
-	@GetMapping("/gokolura")
+	@PostMapping("/gokolura")
 	public ModelAndView facturaGokolura(@RequestParam("huesped") Integer idHuesped,
 			@RequestParam("habitacion") String habitacion, @RequestParam("fechaInicio") LocalDate fechaInicio,
 			@RequestParam("fechaFin") LocalDate fechaFin, @RequestParam("cantidadPersonas") Integer numPersonas,
