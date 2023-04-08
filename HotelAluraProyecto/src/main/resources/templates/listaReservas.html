@@ -63,9 +63,11 @@
 		            <td th:text="${factura.reservacion.habitacion.numHabitacion}"></td>
 		            <td th:text="${factura.fechaPago}"></td>
 		            <td th:text="${factura.montoTotal}"></td>
-		            <td class="text-center row m-auto">
-		            	<a class="col-auto" href="#" data-bs-toggle="modal" th:data-bs-target="'#editarModal' + ${factura.reservacion.idReservacion}"><i class="bi bi-pencil-fill  text-white"></i></a>
-  						<a class="col-auto" href="#" data-bs-toggle="modal" th:data-bs-target="'#eliminarModal' + ${factura.reservacion.idReservacion}"><i class="bi bi-trash-fill  text-white"></i></a>
+		            <td class="text-center">
+		            	<div class="row m-auto">
+		            		<a class="col-auto" href="#" data-bs-toggle="modal" th:data-bs-target="'#editarModal' + ${factura.reservacion.idReservacion}"><i class="bi bi-pencil-fill  text-white"></i></a>
+  							<a class="col-auto" href="#" data-bs-toggle="modal" th:data-bs-target="'#eliminarModal' + ${factura.reservacion.idReservacion}"><i class="bi bi-trash-fill  text-white"></i></a>
+		            	</div>
   						
  							<!-- Modal de editar -->
 						<div class="modal fade" th:id="'editarModal' + ${factura.reservacion.idReservacion}" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
@@ -135,7 +137,7 @@
 									</div>
 									<div class="form-floating mb-3">
 									  <input class="form-control  text-center" id="nombreApellido" disabled th:value="${factura.reservacion.habitacion.tipoHabitacion.nombre}">
-									  <label for="nombreApellido">Huésped</label>
+									  <label for="nombreApellido">Habitación</label>
 									</div>
 									<div class="modal-footer justify-content-center">
 								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -151,8 +153,6 @@
     		</tbody>
 		</table>
 	</div>
-	
-	<div id="texto-seleccionado" hidden=true></div>
 	
 	<script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/cr-1.6.2/r-2.4.1/sb-1.4.1/datatables.min.js"></script>
 </body>

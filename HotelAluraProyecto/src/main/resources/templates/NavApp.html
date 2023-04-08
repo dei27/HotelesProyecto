@@ -10,12 +10,13 @@
         <button type="button" class="btn-close text-bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
+      	<h6 class="offcanvas-title text-center mb-3" th:text="'¡Hola! Saludos ' + ${session.user.nombre} + ' '+ ${session.user.apellido} + '.'"></h6>
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item mb-3">
-            <a class="btn w-100 p-3 btn-info" th:href="@{/index}">Inicio</a>
+            <a class="btn w-100 p-3 btn-light" th:href="@{/index}">Inicio</a>
           </li>
            <li class="nav-item mb-3">
-            <a class="btn w-100 p-3 btn-secondary" th:href="@{/listaReservas}">Ver Reservas</a>
+            <a class="btn w-100 p-3 btn-success" th:href="@{/listaReservas}">Ver Reservas</a>
           </li>
           <li class="nav-item mb-3">
             <form th:action="@{/logout}" method="post">
@@ -23,6 +24,7 @@
         	</form>
           </li>
         </ul>
+  		<h6 class="offcanvas-title text-center mb-3" th:text="'Hoy es '+ ${#dates.format(#dates.createNow(), 'dd/MM/yyyy')} + '.'"></h6>
       </div>
     </div>
     <div class="ms-auto d-flex align-items-center text-white">
@@ -32,3 +34,4 @@
     </div>
   </div>
 </nav>
+<div id="texto-seleccionado" hidden=true></div>

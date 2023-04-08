@@ -29,28 +29,26 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ff735a; /* Color del fondo de la barra de desplazamiento */
+  background: #292D36;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #ff8c78; /* Color de la parte desplazable de la barra de desplazamiento */
+  background: #2B2B2B;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #ec2300; /* Color de la parte desplazable de la barra de desplazamiento cuando el cursor está sobre ella */
+  background: #555555;
 }
 
 .bodyAccesoDenegado {
 	background-image: url("/imgs/401.webp");
 }
 
-.bodyLogin {
-	background-image: url("/imgs/fondoLogin.webp");
-}
+/* .bodyLogin { */
+/* 	background-image: url("/imgs/fondoLogin.webp"); */
+/* } */
 
-.bodyIndex {
-	background-image: url("/imgs/fondoIndex.webp");
-}
+/* .bodyIndex { */
+/* 	background-image: url("/imgs/fondoIndex.webp"); */
+/* } */
 
 .bodyAccesoDenegado, .bodyLogin, .bodyIndex {
 	background-position: center center;
@@ -60,30 +58,67 @@ html {
 }
 
 .cardIndexK {
-	background: rgba(255, 140, 50, 0.8);
+	background-image: url("/imgs/playaGif.gif");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	filter: grayscale(30%);
 }
 
 .cardIndexG {
-	background: rgba(52, 177, 142, 0.8);
+	background-image: url("/imgs/bosque.gif");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	filter: grayscale(30%);
+}
+
+.cardIndexG:hover{
+	filter: grayscale(0%);
+	transition: filter 2s ease;
+}
+
+.cardIndexK:hover{
+	filter: grayscale(0%);
+	transition: filter 2s ease;
 }
 
 .card-header {
-	background: rgba(0, 0, 0, 0.2);
+	background: rgba(0, 0, 0, 0.5);
 }
 
-.cardIndexK:hover {
-	background: rgba(245, 59, 177, 1);
-}
-
-.cardIndexG:hover {
-	background: rgba(100, 100, 150, 1);
-}
-
-.saludo {
-	color: white;
-	font-weight: bolder;
-}
+/* .saludo { */
+/* 	font-weight: bolder; */
+/* } */
 
 td, th{
 	font-size: 1.2vw;
 }
+
+
+.hiddenTextAlurebi{
+	color: rgba(0, 0, 0, 0);
+	transition: color 2s ease;
+	transition: background 2s ease;
+}
+
+
+.hiddenTextGokolura{
+	color: rgba(0, 0, 0, 0);
+	transition: color 2s ease;
+	transition: background 2s ease;
+}
+
+.hiddenTextAlurebi:hover{
+	color: white;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.hiddenTextGokolura:hover{
+	color: white;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+
+
+
