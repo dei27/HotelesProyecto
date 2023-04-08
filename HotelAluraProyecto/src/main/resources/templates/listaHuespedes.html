@@ -101,7 +101,7 @@
 											<div class="input-group mb-3">
 											  	<label class="input-group-text" for="inputGroupSelect01">País</label>
 											  	<select class="form-select p-3" id="inputGroupSelect01" name="pais" required>
-											   		<option th:each="pais : ${paises}" th:value="${pais.idPais}" th:text="${pais.nombre}" class="text-center"></option>
+											   		<option th:each="pais : ${paises}" th:value="${pais.idPais}" th:text="${pais.nombre}" class="text-center" th:selected="${pais.idPais == huesped.pais.idPais}"></option>
 											  </select>
 											</div>
 										</div>
