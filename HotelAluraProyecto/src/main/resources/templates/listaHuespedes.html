@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="author" content="Deivi Campos">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alura Group</title>
+<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.min.js}" defer></script>
+<script type="text/javascript" th:src="@{/js/main.js}" defer></script>
+<script type="text/javascript" th:src="@{/js/datable.js}" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
+<link href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/cr-1.6.2/r-2.4.1/sb-1.4.1/datatables.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
+<body>
+	<header class="sticky-top" >
+		<div th:replace="~{NavApp}"></div>
+	</header>
+	<div class="container table-responsive py-5">
+			<div th:if="${eliminadoHuesped != null && eliminadoHuesped}" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+				<strong>¡Éxito!</strong> Huésped eliminado con éxito.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div th:if="${eliminadoHuesped != null && !eliminadoHuesped}" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+				<strong>¡Error!</strong> No se pudo eliminar el huésped.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div th:if="${modificadoHuesped != null && modificadoHuesped}" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+				<strong>¡Éxito!</strong> Huésped editado con éxito.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<div th:if="${modificadoHuesped != null && !modificadoHuesped}" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+				<strong>¡Error!</strong> No se pudo editar el huésped.
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+			<table class="table table-dark table-hover display w-100 text-center" id="huespedesLista">
+	    	<thead class="table-dark">
+	        	<tr>
+		            <th class="text-center">Nombre</th>
+		            <th class="text-center">Apellido</th>
+		            <th class="text-center">Email</th>
+		            <th class="text-center">Fecha Nacimiento</th>
+		            <th class="text-center">Pais</th>
+		            <th class="text-center">Telefono</th>
+		            <th class="text-center">Acciones</th>
+        		</tr>
+	    	</thead>
+    		<tbody>
+	        	<tr th:each="huesped : ${huespedes}">
+		            <td th:text="${huesped.nombre}"></td>
+		            <td th:text="${huesped.apellido}"></td>
+		            <td th:text="${huesped.email}"></td>
+		            <td th:text="${huesped.fechaNacimiento}"></td>
+		            <td th:text="${huesped.pais.nombre}"></td>
+		            <td th:text="${huesped.telefono}"></td>
+		            <td class="text-center">
+		            	<div class="row m-auto">
+		            		<a class="col-auto" href="#" data-bs-toggle="modal" th:data-bs-target="'#editarModal' + ${huesped.idHuesped}"><i class="bi bi-pencil-fill  text-white"></i></a>
+  							<a class="col-auto" href="#" data-bs-toggle="modal" th:data-bs-target="'#eliminarModal' + ${huesped.idHuesped}"><i class="bi bi-trash-fill  text-white"></i></a>
+		            	</div>
+  						
+ 							<!-- Modal de editar -->
+						<div class="modal fade" th:id="'editarModal' + ${huesped.idHuesped}" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
+						  	<div class="modal-dialog modal-dialog-centered modal-md">
+							    <div class="modal-content">
+							      <div class="modal-header text-bg-dark">
+							        <h5 class="modal-title" id="editarModalLabel">Editar Huésped</h5>
+							        <button type="button" class="btn-close text-bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+							      </div>
+							      <div class="modal-body text-dark">
+							        <form th:action="@{/huesped/editar}" method="post">
+							          <input type="hidden" name="idHuesped" th:value="${huesped.idHuesped}" />
+						         	<div class="form-floating mb-3">
+									  <input class="form-control  text-center" id="nombre" th:value="${huesped.nombre}" name="nombre">
+									  <label for="nombre">Nombre</label>
+									</div>
+									<div class="form-floating mb-3">
+									  <input class="form-control  text-center" id="apellido" th:value="${huesped.apellido}" name="apellido">
+									  <label for="apellido">Apellido</label>
+									</div>
+							        <div class="row">
+										<div class="col-6">
+											<div class="form-floating mb-3">
+											  <input type="email" class="form-control  text-center" id="email" th:value="${huesped.email}" name="correo" readonly="readonly">
+											  <label for="email">Email</label>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+											  <input type="date" class="form-control  text-center" id="fechaNacimiento" th:value="${huesped.fechaNacimiento}" required name="fechaNacimiento">
+											  <label for="fechaNacimiento">Fecha Nacimiento</label>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-6">
+											<div class="input-group mb-3">
+											  	<label class="input-group-text" for="inputGroupSelect01">País</label>
+											  	<select class="form-select p-3" id="inputGroupSelect01" name="pais" required>
+											   		<option th:each="pais : ${paises}" th:value="${pais.idPais}" th:text="${pais.nombre}" class="text-center"></option>
+											  </select>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="form-floating mb-3">
+								        	<input type="tel" class="form-control text-center" id="telefono" placeholder="Teléfono" required name="telefono" th:value="${huesped.telefono}">
+								        	<label for="telefono">Teléfono</label>
+								      	</div>
+										</div>
+									</div>
+							          <button type="submit" class="btn btn-primary">Actualizar</button>
+							        </form>
+							      </div>
+							    </div>
+						  	</div>
+						</div>
+
+						<!-- Modal de eliminación -->
+						<div class="modal fade" th:id="'eliminarModal' + ${huesped.idHuesped}" tabindex="-1" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered modal-md">
+						    <div class="modal-content">
+						      <div class="modal-header text-bg-dark">
+						        <h5 class="modal-title" id="eliminarModalLabel">Eliminar Huésped</h5>
+						        <button type="button" class="btn-close text-bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+						      </div>
+						      <div class="modal-body text-dark">
+						        <form th:action="@{/huesped/eliminar}" method="post">
+						        	<input type="hidden" name="id" th:value="${huesped.idHuesped}" />
+						         	<div class="form-floating mb-3">
+									  <input class="form-control  text-center" id="nombreApellido" disabled th:value="${huesped.nombre} + ' ' + ${huesped.apellido}">
+									  <label for="nombreApellido">Huésped</label>
+									</div>
+									<div class="modal-footer justify-content-center">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+								        <button type="submit" class="btn btn-danger">Eliminar</button>
+								    </div>
+						        </form>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+		            </td>
+	        	</tr>
+    		</tbody>
+		</table>
+	</div>
+	
+	<script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/cr-1.6.2/r-2.4.1/sb-1.4.1/datatables.min.js"></script>
+</body>
+</html>

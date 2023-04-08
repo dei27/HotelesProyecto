@@ -31,4 +31,14 @@ public class HuespedService {
 	public Huesped obtenerUnHuesped(Integer idHuesped) {
 		return huespedRepo.findById(idHuesped).orElseThrow(null);
 	}
+	
+	public Boolean eliminarHuesped(Integer idReserva) {
+		
+		try {
+			huespedRepo.deleteById(idReserva);;
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }
