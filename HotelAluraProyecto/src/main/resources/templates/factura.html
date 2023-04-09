@@ -7,7 +7,7 @@
 		<div th:replace="~{NavApp}"></div>
 	</header>	
 	<div class="container my-3 pt-5">
-		<div class="card">
+		<div class="card border-0 shadow">
 			 <div class="card-body">
 			    <h3 class="card-title text-center" th:text="'Factura #: ' + ${factura.idFactura}"></h3>
 			    <h4 class="card-subtitle mb-2 text-body-secondary text-center" th:text="'Reserva creada con éxito # ' + ${factura.reservacion.idReservacion}"></h4>
@@ -40,7 +40,7 @@
 						  	<input id="fechaInicio" type="date" class="form-control text-center" th:value="${factura.reservacion.fechaInicio}" readonly="readonly">
 						</div>
 			    		<div class="input-group mb-3">
-						  	<label class="input-group-text" for="fechaFin">Fecha Fin</label>
+						  	<label class="input-group-text" for="fechaFin">Fecha Final</label>
 						  	<input id="fechaFin" type="date" class="form-control text-center" th:value="${factura.reservacion.fechaFin}" readonly="readonly">
 						</div>	
 						
@@ -60,10 +60,10 @@
 			    </div>
 			    <div class="row justify-content-center">
 			    		<div class="col-4">
-						    <a th:href="@{/reservas/alurebi}" class="btn btn-secondary w-100 my-3 rounded-4 p-3 my-3">Nueva reserva Hotel Alurebi</a>			    		
+						    <a th:href="@{/reservas/alurebi}" class="btn btnReservaAlurebi w-100 my-3 rounded-4 p-3 my-3  text-white">Nueva reserva Hotel Alurebi</a>			    		
 			    		</div>
 			    		<div class="col-4">
-						    <a th:href="@{/reservas/gokolura}" class="btn btn-secondary w-100 my-3 rounded-4 p-3 my-3">Nueva reserva Hotel Gökolura</a>			    		
+						    <a th:href="@{/reservas/gokolura}" class="btn btnReservaGokolura w-100 my-3 rounded-4 p-3 my-3  text-white">Nueva reserva Hotel Gökolura</a>			    		
 			    		</div>
 			    		<div class="col-4">
 							<a th:href="@{/index}" class="btn btn-secondary w-100 my-3 rounded-4 p-3 my-3">Regresar</a>			    		

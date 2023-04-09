@@ -44,13 +44,13 @@ public class HuespedController extends BaseController {
 	
 
 	@PostMapping("/nuevo")
-	public ModelAndView nuevoHuesped(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("email") String email, @RequestParam("fechaNacimiento") LocalDate fechaNacimiento, @RequestParam("pais") Integer idPais, @RequestParam("telefono") String telefono, HttpSession session) {
+	public ModelAndView nuevoHuesped(@RequestParam("destino") String destino, @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, @RequestParam("email") String email, @RequestParam("fechaNacimiento") LocalDate fechaNacimiento, @RequestParam("pais") Integer idPais, @RequestParam("telefono") String telefono, HttpSession session) {
 		
 		if (!isUserAuthenticated(session)) {
 			return new ModelAndView("redirect:/accesoDenegado");
 		}
 		
-		ModelAndView model = new ModelAndView("redirect:/reservas/gokolura");
+		ModelAndView model = new ModelAndView("redirect:" + destino);
 		pais = paisService.obtenerByIdPais(idPais);
 		isNuevo = huespedService.nuevoHuesped(new Huesped(nombre, apellido, email, fechaNacimiento, pais, telefono));
 		session.setAttribute("nuevo", isNuevo);

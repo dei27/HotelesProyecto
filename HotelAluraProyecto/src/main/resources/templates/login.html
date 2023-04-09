@@ -4,30 +4,36 @@
 </head>
 <body class="bodyLogin">
 	<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
-		<div class="card w-50 border-0">
-			<div class="card-header text-bg-dark py-3">
-				<h4 class="card-title text-center">L O G I N</h4>
-			</div>
-			<div class="card-body">
-				<form th:action="@{/login}" method="post" th:object="${usuario}">
-					<div class="form-group text-center">
-						<div th:if="${#fields.hasErrors('email')}" class="alert alert-danger alert-dismissible fade show" role="alert">
-							<span th:errors="*{email}"></span>
-  							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		<div class="card w-50 border-0 shadow p-3">
+			<div class="row g-0">
+				<div class="col-4 loginBackgroundImage"></div>
+		    	 <div class="col-8">
+		    	 	<div class="card-body">
+		    	 		<div class="card-header text-bg-dark py-3">
+							<h4 class="card-title text-center">L O G I N</h4>
 						</div>
+						<form th:action="@{/login}" method="post" th:object="${usuario}">
+							<div class="form-group text-center">
+								<div th:if="${#fields.hasErrors('email')}" class="alert alert-danger alert-dismissible fade show" role="alert">
+									<span th:errors="*{email}"></span>
+		  							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+								</div>
+							</div>
+							<div class="form-floating mb-3 py-2">
+								<input type="email" class="form-control text-center" id="floatingInput" name="email" th:field="*{email}" required> 
+								<label for="floatingInput">Email</label>
+							</div>
+							<div class="form-floating mb-3 py-2">
+								<input type="password" class="form-control text-center" id="floatingPassword" name="password" th:field="*{password}" required>
+								<label for="floatingPassword">Contraseña</label>
+							</div>
+							<div class="d-grid">
+								<button type="submit" class="btn btn-dark text-white py-3">Ingresar<i class="bi bi-door-open-fill mx-3"></i></button>
+							</div>
+							
+						</form>
 					</div>
-					<div class="form-floating mb-3 py-2">
-						<input type="email" class="form-control text-center" id="floatingInput" name="email" th:field="*{email}" required> 
-						<label for="floatingInput">Email</label>
-					</div>
-					<div class="form-floating mb-3 py-2">
-						<input type="password" class="form-control text-center" id="floatingPassword" name="password" th:field="*{password}" required>
-						<label for="floatingPassword">Contraseña</label>
-					</div>
-					<div class="d-grid">
-						<button type="submit" class="btn btn-dark text-white py-3">Ingresar</button>
-					</div>
-				</form>
+		    	 </div>
 			</div>
 		</div>
 	</div>

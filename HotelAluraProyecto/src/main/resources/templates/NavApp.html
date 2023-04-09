@@ -11,19 +11,19 @@
       </div>
       <div class="offcanvas-body">
       	<h6 class="offcanvas-title text-center mb-3" th:text="'¡Hola! Saludos ' + ${session.user.nombre} + ' '+ ${session.user.apellido} + '.'"></h6>
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 text-white">
           <li class="nav-item mb-3">
-            <a class="btn w-100 p-3 btn-light" th:href="@{/index}">Inicio</a>
+            <a class="btn w-100 p-3 btnInicio" th:href="@{/index}">Inicio</a>
           </li>
            <li class="nav-item mb-3">
-            <a class="btn w-100 p-3 btn-success" th:href="@{/listaReservas}">Ver Reservas</a>
+            <a class="btn w-100 p-3 btnReservas" th:href="@{/listaReservas}">Ver Reservas</a>
           </li>
           <li class="nav-item mb-3">
-            <a class="btn w-100 p-3 btn-info text-white" th:href="@{/huesped/lista}">Ver Huéspedes</a>
+            <a class="btn w-100 p-3 btnHuespedes" th:href="@{/huesped/lista}">Ver Huéspedes</a>
           </li>
           <li class="nav-item mb-3">
             <form th:action="@{/logout}" method="post">
-         		<button type="submit" class="btn btn-warning w-100 p-3 text-white">Cerrar sesión</button>
+         		<button type="submit" class="btn btnCerrarSesion w-100 p-3">Cerrar sesión</button>
         	</form>
           </li>
         </ul>

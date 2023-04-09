@@ -1,6 +1,33 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bitter:ital,wght@0,200;1,400&family=Lato:ital,wght@0,400;1,300&family=Merriweather:wght@300;700&family=Montserrat+Alternates:wght@300;500&family=Oswald&family=PT+Sans+Caption:wght@700&family=Playfair+Display+SC:wght@700&family=Poppins:wght@300&family=Raleway:wght@300&family=Roboto+Slab:wght@200;500&family=Ubuntu+Mono:wght@400;700&display=swap')
-	;
+;
+
+:root {
+  --color1: rgba(0, 117, 183, 1);
+  --color2: rgba(0, 136, 128, 1);
+  
+  /* Opción 1 */
+  --color3: rgba(33, 165, 231, 1);
+  --color4: rgba(43, 198, 187, 1);
+
+  /* Opción 2 */
+  --color5: rgba(0, 180, 255, 1);
+  --color6: rgba(0, 204, 192, 1);
+  
+  --colorFondo01: rgb(102, 211, 252);
+  --colorFondo02: rgb(252, 143, 172);
+  --colorFondo03: rgb(2, 95, 130);
+  --colorFondo04: rgb(2, 109, 150);
+  --colorFondo05: rgb(212, 172, 207);
+  --colorFondo06: rgb(2, 109, 150);
+  
+  --colorFondo01hover: rgb(71, 147, 176);
+  --colorFondo02hover: rgb(177, 62, 75);
+  --colorFondo03hover: rgb(1, 66, 91);
+  --colorFondo04hover: rgb(1, 76, 105);
+  --colorFondo05hover: rgb(148, 119, 144);
+  --colorFondo06hover: rgb(1, 76, 105);
+}
 
 /* font-family: 'Abril Fatface', cursive; */
 /* font-family: 'Bitter', serif; */
@@ -19,7 +46,7 @@ html {
 }
 
 * {
-	font-size: 1.3vw;
+	font-size: 1.2vw;
 	font-family: 'Poppins', sans-serif;
 }
 
@@ -38,23 +65,90 @@ html {
   background: #555555;
 }
 
+.btnReservaAlurebi{
+	background: var(--color1);
+}
+
+.btnReservaGokolura{
+	background: var(--color2);
+}
+
+.btnReservaAlurebi:hover{
+	background: var(--color5);
+	color: white;
+	font-weight: bolder;
+}
+
+.btnReservaGokolura:hover{
+	background: var(--color6);
+	color: white;
+	font-weight: bolder;
+}
+
+.btnInicio, .btnReservas, .btnHuespedes, .btnCerrarSesion {
+	color: white;
+}
+
+.btnInicio{
+	background: var(--colorFondo01);
+}
+
+.btnReservas{
+	background: var(--colorFondo02);
+}
+
+.btnHuespedes{
+	background: var(--colorFondo03);
+}
+
+.btnCerrarSesion{
+	background: var(--colorFondo05);
+}
+
+.btnInicio:hover{
+	background: var(--colorFondo01hover);
+}
+
+.btnReservas:hover{
+	background: var(--colorFondo02hover);
+}
+
+.btnHuespedes:hover{
+	background: var(--colorFondo03hover);
+}
+
+.btnCerrarSesion:hover{
+	background: var(--colorFondo05hover);
+}
+
 .bodyAccesoDenegado {
 	background-image: url("/imgs/401.webp");
 }
 
-/* .bodyLogin { */
-/* 	background-image: url("/imgs/fondoLogin.webp"); */
-/* } */
+.bodyReservaAlurebi{
+	background-image: url("/imgs/waveAlurebi.png");
+}
 
-/* .bodyIndex { */
-/* 	background-image: url("/imgs/fondoIndex.webp"); */
-/* } */
+.bodyReservaGokolura{
+	background-image: url("/imgs/waveGokolura.png");
+}
 
-.bodyAccesoDenegado, .bodyLogin, .bodyIndex {
+body {
+	background-image: url("/imgs/login.webp");
+}
+
+body, .bodyAccesoDenegado, .bodyReservaAlurebi, .bodyReservaGokolura {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+}
+
+.loginBackgroundImage{
+	background-image: url("/imgs/registro.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 .cardIndexK {
@@ -111,12 +205,12 @@ td, th{
 
 .hiddenTextAlurebi:hover{
 	color: white;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.7);
 }
 
 .hiddenTextGokolura:hover{
 	color: white;
-	background: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.7);
 }
 
 
