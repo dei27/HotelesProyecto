@@ -65,6 +65,10 @@ html {
   background: #555555;
 }
 
+h2{
+	font-family: 'Raleway', sans-serif;
+}
+
 .btnReservaAlurebi{
 	background: var(--color1);
 }
