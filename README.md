@@ -10,9 +10,9 @@ También se creó un trigger que genera automáticamente la factura al momento d
 calculando los costos según el tipo de habitación y los días entre fechas. Por último, se creó un trigger que recalcula los costos al actualizar una reserva.
 Se incluye un Script con el nombre de ScriptHoteles.sql que contiene todo lo necesario para crear la base de datos.</p>
 <h2>Tecnologías utilizadas</h2>
-- Spring Boot 3 ![Spring Boot icon](https://img.icons8.com/color/48/000000/spring-logo.png)
-- Maven ![Maven icon](https://img.icons8.com/color/48/000000/maven.png)
-- Hibernate ![Hibernate icon](https://img.icons8.com/color/48/000000/hibernate.png)
-- Thymeleaf ![Thymeleaf icon](https://img.icons8.com/color/48/000000/thymeleaf.png)
-- CSS ![CSS icon](https://img.icons8.com/color/48/000000/css3.png)
+<p align="center">Spring Boot 3
+Maven
+Hibernate
+Thymeleaf
+CSS</p>
 
